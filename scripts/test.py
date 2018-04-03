@@ -18,8 +18,8 @@ import Qconfig_c as Qconfig
 from qiskit.tools.visualization import plot_histogram
 
 M = 16                   #Maximum number of physical qubits available
-numberOfCoins = 8        #This number should be up to M-1, where M is the number of qubits available
-indexOfFalseCoin = 3     #This should be 0, 1, ..., numberOfCoins - 1, where we use python indexing
+numberOfCoins = 4        #This number should be up to M-1, where M is the number of qubits available
+indexOfFalseCoin = 1     #This should be 0, 1, ..., numberOfCoins - 1, where we use python indexing
 
 if numberOfCoins < 4 or numberOfCoins >= M:
     raise Exception("Please use numberOfCoins between 4 and ", M-1)
@@ -42,10 +42,12 @@ N = numberOfCoins
 #Create uniform superposition of all strings of length N
 for i in range(N):
     queryStateCircuit.h(qr[i])
+#sccessfully create hadamard state
 
 #Perform XOR(x) by applying CNOT gates sequentially from qr[0] to qr[N-1] and storing the result to qr[N]
 for i in range(N):
     queryStateCircuit.cx(qr[i], qr[N])
+#even or odd
 
 #Measure qr[N] and store the result to cr[N]. We continue if cr[N] is zero, or repeat otherwise
 queryStateCircuit.measure(qr[N], cr[N])
@@ -58,34 +60,26 @@ queryStateCircuit.h(qr[N]).c_if(cr, 0)
 # we rewind the computation when cr[N] is not zero
 for i in range(N):
     queryStateCircuit.h(qr[i]).c_if(cr, 2**N)
+#
+# k = indexOfFalseCoin
+# # Apply the quantum beam balance on the desired superposition state (marked by cr equal to zero)
+# queryStateCircuit.cx(qr[k], qr[N]).c_if(cr, 0)
+#
+# # Apply Hadamard transform on qr[0] ... qr[N-1]
+# for i in range(N):
+#     queryStateCircuit.h(qr[i]).c_if(cr, 0)
 
-k = indexOfFalseCoin
-# Apply the quantum beam balance on the desired superposition state (marked by cr equal to zero)
-queryStateCircuit.cx(qr[k], qr[N]).c_if(cr, 0)
 
-# Apply Hadamard transform on qr[0] ... qr[N-1]
 for i in range(N):
-    queryStateCircuit.h(qr[i]).c_if(cr, 0)
-
-# Measure qr[0] ... qr[N-1]
-# queryStateCircuit.measure(qr, cr) #THIS IS NOT SUPPORTED?
-for i in range(N):
-    queryStateCircuit.measure(qr[i], cr[i])
+    queryStateCircuit.measure(qr[i],cr[i])
 
 backend = "local_qasm_simulator"
 #backend = "ibmqx3"
 shots = 1 # We perform a one-shot experiment
 results = Q_program.execute([circuitName], backend=backend, shots=shots)
 answer = results.get_counts(circuitName)
-# for key in answer.keys():
-#     if key[0:1] == "1":
-#         raise Exception("Fail to create desired superposition of balanced query string. Please try again")
 
-plot_histogram(answer)
-from collections import Counter
+plot_histogram(answer,16)
+
 for key in answer.keys():
-    normalFlag, _ = Counter(key[1:]).most_common(1)[0] #get most common label
-    for i in range(2,len(key)):
-        if key[i] != normalFlag:
-            print("False coin index is: ", len(key) - i - 1)
-        
+    print(key[0:1])
