@@ -19,7 +19,7 @@ from qiskit.tools.visualization import plot_histogram
 
 M = 16                   #Maximum number of physical qubits available
 numberOfCoins = 8        #This number should be up to M-1, where M is the number of qubits available
-indexOfFalseCoin = 6     #This should be 0, 1, ..., numberOfCoins - 1, where we use python indexing
+indexOfFalseCoin = 3     #This should be 0, 1, ..., numberOfCoins - 1, where we use python indexing
 
 if numberOfCoins < 4 or numberOfCoins >= M:
     raise Exception("Please use numberOfCoins between 4 and ", M-1)
@@ -77,9 +77,9 @@ backend = "local_qasm_simulator"
 shots = 1 # We perform a one-shot experiment
 results = Q_program.execute([circuitName], backend=backend, shots=shots)
 answer = results.get_counts(circuitName)
-for key in answer.keys():
-    if key[0:1] == "1":
-        raise Exception("Fail to create desired superposition of balanced query string. Please try again")
+# for key in answer.keys():
+#     if key[0:1] == "1":
+#         raise Exception("Fail to create desired superposition of balanced query string. Please try again")
 
 plot_histogram(answer)
 from collections import Counter
