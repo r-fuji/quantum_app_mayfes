@@ -1,0 +1,170 @@
+html {
+	height: 100%;
+}
+body {
+	width: 100%;
+	min-height: 100%;
+	display: table;
+	background: #fff;
+}
+.cardList {
+	width: 400px;
+	height: 100%;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.card,
+.inner,
+.card .face,
+.card .back {
+	width: 80px;
+	height: 120px;
+	border-radius: 3px;
+}
+.card {
+	margin: 3px;
+	display: inline-block;
+	perspective: 800px;
+	-webkit-perspective: 800px;
+}
+.inner {
+	cursor: pointer;
+	overflow: hidden;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+.card .face,
+.card .back {
+	vertical-align: middle;
+	text-align: center;
+	background: #fff;
+}
+.card .face {
+	box-sizing: border-box;
+	display: none;
+	border: 1px solid #ccc;
+	background: #fff;
+}
+.card .face img {
+
+}
+.card .back {
+	display: table-cell;
+	background: url(http://jsrun.it/assets/2/n/8/2/2n82P.png);
+}
+.card.reverse .face {
+	display: table-cell;
+}
+.card.reverse .back {
+	display: none;
+}
+
+
+.player_container{
+	width: 100%;
+	height: 200px;
+	display: flex;
+}
+
+.player_container .player{
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.player_container .space{
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.player_img{
+	height: : 100px;
+}
+
+
+.player_box_container{
+	width: 100%;
+	height: 600px;
+	display: flex;
+}
+
+.player_box_container .player_box{
+	margin: 10px;
+	border: solid;
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.player_box_container .space_box{
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.bank{
+	width: 100%;
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.bank img{
+	width: 64px;
+	height: 64px;
+}
+
+.pattern{
+	width: 100%;
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.pattern img{
+	width: 64px;
+	height: 64px;
+}
+
+.patterncard {
+	height: 100px;
+	width: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.minicard,
+.miniinner,
+.minicard .miniface{
+	width: 10px;
+	height: 25px;
+	border-radius: 1px;
+}
+
+.minicard {
+	margin: 3px;
+	display: inline-block;
+	perspective: 800px;
+	-webkit-perspective: 800px;
+}
+.miniinner {
+	cursor: pointer;
+	overflow: hidden;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+
+.miniface img{
+	width: 100%;
+	height: 100%;
+}
