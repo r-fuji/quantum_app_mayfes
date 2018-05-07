@@ -3,4 +3,5 @@ from flaskr import app
 
 @app.route('/')
 def show_card():
-    return render_template('show_card.html')
+    cards = [0,0,0,0,0,1,0,0,0,0,0,0]
+    return render_template('show_card.html',cards=cards)

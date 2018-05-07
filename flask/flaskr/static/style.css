@@ -8,7 +8,7 @@ body {
 	background: #fff;
 }
 .cardList {
-	width: 100%;
+	width: 400px;
 	height: 100%;
 	display: table-cell;
 	vertical-align: middle;
@@ -18,12 +18,12 @@ body {
 .inner,
 .card .face,
 .card .back {
-	width: 160px;
-	height: 240px;
-	border-radius: 6px;
+	width: 80px;
+	height: 120px;
+	border-radius: 3px;
 }
 .card {
-	margin: 10px;
+	margin: 3px;
 	display: inline-block;
 	perspective: 800px;
 	-webkit-perspective: 800px;
@@ -46,8 +46,7 @@ body {
 	background: #fff;
 }
 .card .face img {
-	width: 120px;
-	height: 120px;
+
 }
 .card .back {
 	display: table-cell;
@@ -58,4 +57,114 @@ body {
 }
 .card.reverse .back {
 	display: none;
+}
+
+
+.player_container{
+	width: 100%;
+	height: 200px;
+	display: flex;
+}
+
+.player_container .player{
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.player_container .space{
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.player_img{
+	height: : 100px;
+}
+
+
+.player_box_container{
+	width: 100%;
+	height: 600px;
+	display: flex;
+}
+
+.player_box_container .player_box{
+	margin: 10px;
+	border: solid;
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.player_box_container .space_box{
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.bank{
+	width: 100%;
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.bank img{
+	width: 64px;
+	height: 64px;
+}
+
+.pattern{
+	width: 100%;
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.pattern img{
+	width: 64px;
+	height: 64px;
+}
+
+.patterncard {
+	height: 100px;
+	width: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.minicard,
+.miniinner,
+.minicard .miniface{
+	width: 10px;
+	height: 25px;
+	border-radius: 1px;
+}
+
+.minicard {
+	margin: 3px;
+	display: inline-block;
+	perspective: 800px;
+	-webkit-perspective: 800px;
+}
+.miniinner {
+	cursor: pointer;
+	overflow: hidden;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+
+.miniface img{
+	width: 100%;
+	height: 100%;
 }
