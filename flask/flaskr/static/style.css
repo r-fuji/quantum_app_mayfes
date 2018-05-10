@@ -100,12 +100,14 @@ body {
 	align-items: center;
 }
 .player_box_container .space_box{
+	padding: 10px;
 	width: 20%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-end;
 	align-items: center;
 }
+
 
 .bank{
 	width: 100%;
@@ -116,6 +118,10 @@ body {
 	align-items: center;
 }
 .bank img{
+	width: 64px;
+	height: 64px;
+}
+.joker img{
 	width: 64px;
 	height: 64px;
 }
@@ -130,8 +136,8 @@ body {
 }
 
 .pattern img{
-	width: 64px;
-	height: 64px;
+	width: 256px;
+	height: 256px;
 }
 
 .patterncard {
@@ -142,29 +148,13 @@ body {
 	align-items: center;
 }
 
-
-.minicard,
-.miniinner,
-.minicard .miniface{
-	width: 10px;
-	height: 25px;
-	border-radius: 1px;
-}
-
-.minicard {
-	margin: 3px;
-	display: inline-block;
-	perspective: 800px;
-	-webkit-perspective: 800px;
-}
-.miniinner {
-	cursor: pointer;
-	overflow: hidden;
-	box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-}
-
-
-.miniface img{
+.reset_btn{
 	width: 100%;
-	height: 100%;
+	height: 80px;
+}
+
+.reset_btn{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

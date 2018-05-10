@@ -7,7 +7,7 @@
   <div class="space">
     <p>Question</p>
     <img src="{{ url_for('static', filename='picture/right_arrow_64px.png') }}" alt="" class="player_img">
-    
+    <button type="button" class="btn btn-primary" id="quantum_question_btn">量子的に問いかける</button>
   </div>
   <div class="player"><img src="{{ url_for('static', filename='picture/dealer1.png') }}" alt="" class="player_img"></div>
 </div>
@@ -27,7 +27,7 @@
     <div>
       <p class="score_string">0</p>
     </div>
-    <a class="btn reset_btn btn-primary" href="http://127.0.0.1:5000/card" role="button">リスタート</a>
+    <a class="btn reset_btn btn-primary" href="http://127.0.0.1:5000/quantum" role="button">リスタート</a>
   </div>
 
 
@@ -66,6 +66,6 @@
 
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='card.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='card_quantum.js') }}"></script>
 
 {% endblock %}
