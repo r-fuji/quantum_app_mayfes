@@ -2,6 +2,13 @@
 	var score = 0;
 	var game_end = false;
  	var score_string = document.getElementById('score_string');
+
+	var quantum_question_btn = $('#quantum_question_btn');
+	console.log(quantum_question_btn)
+	quantum_question_btn.click(function(){
+		console.log("ok")
+	});
+
 	$.fn.rotate_box = function(){
 
 		var	elm = $(this),
@@ -47,31 +54,31 @@
 			}, 5);
 		};
 
-		btn.click(function(){
-			if(game_end == false){
-				if(elm.hasClass("reversed") == false ){
-					rotate();
-					elm.addClass("reversed");
 
-					if(elm.hasClass("joker") == true){
-						score += 100;
-						$("p.score_string").text(score)
-						game_end = true;
+		// btn.click(function(){
+		// 	if(game_end == false){
+		// 		if(elm.hasClass("reversed") == false ){
+		// 			rotate();
+		// 			elm.addClass("reversed");
+		//
+		// 			if(elm.hasClass("joker") == true){
+		// 				score += 100;
+		// 				$("p.score_string").text(score)
+		// 				game_end = true;
+		//
+		// 			}else{
+		// 				score += 100;
+		// 				$("p.score_string").text(score);
+		// 			}
+		// 		}else{
+		// 		}
+		// 	}
 
-					}else{
-						score += 100;
-						$("p.score_string").text(score);
-					}
-				}else{
-				}
-			}
-
-
-		});
+		//
+		// });
 	};
 })(jQuery);
 
 $('.card').each(function(){
 	$(this).rotate_box();
-
 });
