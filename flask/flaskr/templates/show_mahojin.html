@@ -1,0 +1,457 @@
+
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="player_container_magic">
+  <div class="piece_wrap">
+    <div class="piece1_wrap">
+      <div class="piece" id="piece1" draggable="true" id="choice1">
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/player2.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/dealer1.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/dealer1.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="piece2_wrap">
+      <div class="piece2" id="piece2_1" draggable="true" id="choice1">
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/dealer1.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/player2.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/player2.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="piece_wrap">
+    <div class="piece1_wrap">
+      <div class="piece" id="piece2" draggable="true">
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/dealer1.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/player2.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/dealer1.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+      </div>
+    </div>
+
+    <div class="piece2_wrap">
+      <div class="piece2" id="piece2_2" draggable="true">
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/player2.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/dealer1.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/player2.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="piece_wrap">
+    <div class="piece1_wrap">
+      <div class="piece" id="piece3" draggable="true">
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/dealer1.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/dealer1.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/player2.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+      </div>
+    </div>
+
+    <div class="piece2_wrap">
+      <div class="piece2" id="piece2_3" draggable="true">
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/player2.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/player2.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+        <div class="choice_box">
+          <img src="{{ url_for('static', filename='picture/dealer1.png') }}" alt="" class="box_img" draggable="false">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+<div class="player_box_container">
+
+  <div class="magic_wrap">
+
+    <div class="magic_square2_wrap">
+      <div class="magic_square2">
+        <div class="piecezone_2" id="piecezone1_2">
+          <div class="magic_box col1 conbox_2"></div>
+          <div class="magic_box col2 conbox_2"></div>
+          <div class="magic_box col3 conbox_2"></div>
+        </div>
+        <div class="piecezone_2" id="piecezone2_2">
+          <div class="magic_box col1 conbox_2"></div>
+          <div class="magic_box col2 conbox_2"></div>
+          <div class="magic_box col3 conbox_2"></div>
+        </div>
+        <div class="piecezone_2" id="piecezone3_2">
+          <div class="magic_box col1 conbox_2"></div>
+          <div class="magic_box col2 conbox_2"></div>
+          <div class="magic_box col3 conbox_2"></div>
+        </div>
+      </div>
+    </div>
+
+  <div class="magic_square_wrap">
+    <div class="magic_square">
+      <div class="piecezone" id="piecezone1">
+        <div class="magic_box row1 conbox"></div>
+        <div class="magic_box row2 conbox"></div>
+        <div class="magic_box row3 conbox"></div>
+      </div>
+      <div class="piecezone" id="piecezone2">
+        <div class="magic_box row1 conbox"></div>
+        <div class="magic_box row2 conbox"></div>
+        <div class="magic_box row3 conbox"></div>
+      </div>
+      <div class="piecezone" id="piecezone3">
+        <div class="magic_box row1 conbox" ></div>
+        <div class="magic_box row2 conbox"></div>
+        <div class="magic_box row3 conbox"></div>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="ans_magic_square_wrap">
+      <div class="ans_magic_square">
+          <div class="ans_magic_box conbox" id="cell1"></div>
+          <div class="ans_magic_box conbox" id="cell2"></div>
+          <div class="ans_magic_box conbox" id="cell3"></div>
+          <div class="ans_magic_box conbox" id="cell4"></div>
+          <div class="ans_magic_box conbox" id="cell5"></div>
+          <div class="ans_magic_box conbox" id="cell6"></div>
+          <div class="ans_magic_box conbox" id="cell7"></div>
+          <div class="ans_magic_box conbox" id="cell8"></div>
+          <div class="ans_magic_box conbox" id="cell9"></div>
+      </div>
+    </div>
+
+
+
+
+
+    <a class="btn btn-primary btn-magic" id="magic-next"role="button" href="#">次へ</a>
+    <a class="btn btn-primary btn-magic" role="button" href="http://127.0.0.1:5000/mahojin">リセット</a>
+
+
+    </div>
+  </div>
+
+
+</div>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.6/lib/draggable.bundle.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='card.js') }}"></script>
+
+<script>
+var rowvalue = 0;
+var piecevalue = 0;
+var rowfilled = false;
+
+var colvalue = 0;
+var piece2value = 0;
+var colfilled = false;
+
+var rowvectror = [];
+var colvectror = [];
+
+
+// ピースの関数
+$('#piece1').on('dragstart', onDragStart);
+$('#piece2').on('dragstart', onDragStart);
+$('#piece3').on('dragstart', onDragStart);
+$('#piece2_1').on('dragstart', onDragStart);
+$('#piece2_2').on('dragstart', onDragStart);
+$('#piece2_3').on('dragstart', onDragStart);
+
+// 受け取り側の関数
+$('#piecezone1').on('dragover', onDragOver);
+$('#piecezone1').on('dragleave', offDragOver);
+$('#piecezone1').on('drop', onDrop);
+$('#piecezone2').on('dragover', onDragOver);
+$('#piecezone2').on('dragleave', offDragOver);
+$('#piecezone2').on('drop', onDrop);
+$('#piecezone3').on('dragover', onDragOver);
+$('#piecezone3').on('dragleave', offDragOver);
+$('#piecezone3').on('drop', onDrop);
+
+$('#piecezone1_2').on('dragover', onDragOver);
+$('#piecezone1_2').on('dragleave', offDragOver);
+$('#piecezone1_2').on('drop', onDrop2);
+$('#piecezone2_2').on('dragover', onDragOver);
+$('#piecezone2_2').on('dragleave', offDragOver);
+$('#piecezone2_2').on('drop', onDrop2);
+$('#piecezone3_2').on('dragover', onDragOver);
+$('#piecezone3_2').on('dragleave', offDragOver);
+$('#piecezone3_2').on('drop', onDrop2);
+
+$('#magic-next').on('click', clickNext);
+
+function onDragStart(e) {
+  e.originalEvent.dataTransfer.setData('text', this.id);
+}
+
+function onDragOver(e) {
+  e.preventDefault();
+  $(this).css('background','rgba(0,0,0,0.5)');
+  // this.textContent = 'onDragOver';
+}
+function offDragOver(e) {
+  e.preventDefault();
+  $(this).css('background','rgba(255,255,255,1)');
+  // this.textContent = 'offDragOver';
+}
+
+function piecenumber(str){
+  if("piecezone1" == str || "piecezone1_2"==str){
+    return 1;
+  }else if("piecezone2" == str || "piecezone2_2"==str){
+    return 2;
+  }else{
+    return 3;
+  }
+}
+
+function onDrop(e) {
+
+  e.preventDefault();
+  var type = e.originalEvent.dataTransfer.getData('text');
+  if(type=="piece1"){
+    rowlist = [];
+    $(".conbox").empty();
+    $(this).children('.row1').append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.row2').append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.row3').append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    rowvalue=this.id;
+    piecevalue=1;
+    rowvectror = [1, 0,0 ]
+    rowfilled = true;
+
+  }else if (type=="piece2") {
+    rowlist = [];
+    $(".conbox").empty();
+    $(this).children('.row1').append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.row2').append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.row3').append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    rowvalue=this.id;
+    piecevalue=2;
+    rowvectror = [0,1,0]
+    rowfilled = true;
+  }else{
+    rowlist = [];
+    $(".conbox").empty();
+    $(this).children('.row1').append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.row2').append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.row3').append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    rowvalue=this.id;
+    piecevalue=3;
+    rowvectror = [0,0,1]
+    rowfilled = true;
+  }
+
+  $(this).css('background','rgba(255,255,255,1)');
+  console.log(rowvalue)
+  console.log(piecevalue)
+  console.log(rowvectror)
+
+}
+
+function onDrop2(e) {
+
+  e.preventDefault();
+  var type = e.originalEvent.dataTransfer.getData('text',);
+  if(type=="piece2_1"){
+    collist = [];
+    $(".conbox_2").empty();
+    $(this).children('.col1').append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.col2').append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.col3').append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    colvalue =this.id;
+    piece2value = 1
+    colvectror = [0, 1,1 ]
+    colfilled = true
+
+
+  }else if (type=="piece2_2") {
+    collist = [];
+    $(".conbox_2").empty();
+    $(this).children('.col1').append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.col2').append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.col3').append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    colvalue =this.id;
+    piece2value = 2;
+    colvectror = [1, 0,1 ]
+    colfilled = true
+  }else{
+    collist = [];
+    $(".conbox_2").empty();
+    $(this).children('.col1').append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.col2').append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.col3').append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    colvalue =this.id;
+    piece2value = 3
+    colvectror = [1, 1,0 ]
+    colfilled = true
+  }
+
+  $(this).css('background','rgba(255,255,255,1)');
+  console.log(rowvalue)
+  console.log(piecevalue)
+  console.log(colvalue)
+  console.log(piece2value)
+  console.log(rowvectror)
+  console.log(colvectror)
+
+}
+
+function clickNext(e) {
+  // $(".magic_square").show();
+  // $(".magic_square2").hide();
+  // $(".piece1_wrap").show();
+  // $(".piece2").hide();
+  if(rowfilled == true){
+    $(".magic_square_wrap").hide();
+    $(".magic_square2_wrap").show();
+    $(".piece1_wrap").hide();
+    $(".piece2_wrap").show();
+    rowfilled = false;
+  }
+  if (colfilled == true) {
+    $(".magic_square2_wrap").hide();
+    $(".piece2_wrap").hide();
+    $(".ans_magic_square_wrap").show();
+    $(".player_container_magic").hide();
+
+
+
+    //
+    if(rowvalue == "piecezone1"){
+      start = 0;
+      for(var i in rowvectror){
+        num =Number(i)+Number(start)+1;
+        console.log(num,rowvectror[i]);
+
+        if(rowvectror[i] == 0){
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }else{
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }
+      }
+
+    }else if(rowvalue == "piecezone2"){
+      console.log("2");
+      start = 3;
+      for(var i in rowvectror){
+        num =Number(i)+Number(start)+1;
+        console.log(num,rowvectror[i]);
+
+        if(rowvectror[i] == 0){
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }else{
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }
+      }
+
+    }else{
+      console.log("3");
+      start = 6;
+      for(var i in rowvectror){
+        num =Number(i)+Number(start)+1;
+        console.log(num,rowvectror[i]);
+
+        if(rowvectror[i] == 0){
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }else{
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }
+      }
+    }
+
+
+    if(colvalue == "piecezone1_2"){
+      console.log("1");
+      start = 0;
+      for(var i in colvectror){
+        num =Number(i)*3+Number(start)+1;
+        console.log(num,colvectror[i]);
+
+        if(colvectror[i] == 0){
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }else{
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }
+      }
+    }else if(colvalue == "piecezone2_2"){
+      start = 1;
+      for(var i in colvectror){
+        num =Number(i)*3+Number(start)+1;
+        console.log(num,colvectror[i]);
+        if(colvectror[i] == 0){
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }else{
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }
+      }
+    }else{
+      start = 2;
+      for(var i in colvectror){
+        num =Number(i)*3+Number(start)+1;
+        console.log(num,colvectror[i]);
+
+        if(colvectror[i] == 0){
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/dealer1.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }else{
+          $("#cell"+num).append('<img src=\"{{ url_for('static', filename='picture/player2.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+        }
+      }
+    }
+
+
+
+
+
+
+    colfilled = false;
+  }
+
+
+}
+
+</script>
+
+{% endblock %}

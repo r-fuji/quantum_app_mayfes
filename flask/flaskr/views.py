@@ -12,3 +12,9 @@ def show_card():
 def show_card_quantum():
     cards = [0,0,0,0,0,1,0,0,0,0,0,0]
     return render_template('show_card_quantum.html',cards=cards)
+
+
+@app.route('/mahojin')
+def show_mahojin():
+    cards = [0,0,0,0,0,1,0,0,0,0,0,0]
+    return render_template('show_mahojin.html',cards=cards)
