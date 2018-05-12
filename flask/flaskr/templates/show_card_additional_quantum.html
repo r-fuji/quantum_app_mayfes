@@ -1,0 +1,105 @@
+
+{% extends "layout.html" %}
+{% block body %}
+
+
+<div class="player_box_container_add">
+  <!-- <div class="space_box">
+    <div>
+      <p>スコア</p>
+    </div>
+    <div>
+      <p class="score_string">0</p>
+    </div>
+    <a class="btn reset_btn btn-primary" href="http://127.0.0.1:5000/card" role="button">リスタート</a>
+    <a class="btn reset_btn btn-primary" id="open-button" role="button">開く</a>
+
+  </div> -->
+  <div class="diamondswrap">
+    {%for i in range(21)%}
+      {%if cards[i] == 0%}
+      <a href="#" class="item item-size" id="item{{i}}">
+        <div class="item-color"></div>
+        <div class="item-color-hide"></div>
+      </a>
+
+      {%endif%}
+      <!-- http://jsrun.it/assets/9/d/P/N/9dPNH.png -->
+      {%if cards[i] == 1%}
+      <a href="#" class="item item-size" id="item{{i}}">
+        <div class="item-color"></div>
+        <img src="{{ url_for('static', filename='picture/apple_256px.png') }}" alt="" class="apple_img"></img>
+      </a>
+      {%endif%}
+    {%endfor%}
+  </div>
+
+    <div class="score-render">
+      <div>
+        <p>スコア</p>
+      </div>
+      <div>
+        <p class="score_string">2000</p>
+      </div>
+      <a class="btn reset_btn btn-primary" href="http://127.0.0.1:5000/quantum" role="button">リスタート</a>
+    </div>
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='card.js') }}"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='jquery.diamonds.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='granim.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.js"></script>
+
+<script>
+var score = 2000;
+var game_end = false;
+var score_string = document.getElementById('score_string');
+
+$(".diamondswrap").diamonds({
+    size: 250, // Size of the squares
+    gap: 10 // Pixels between squares
+});
+
+
+{%for i in range(21)%}
+$('#item{{i}}').on('click', click{{i}});
+function click{{i}}(e) {
+  {%for j in range(21)%}
+    if({{cards[j]}} == 0){
+      if(game_end == false){
+        if($('#item{{j}}').hasClass("reversed") == false ){
+          $('#item{{j}}').addClass("reversed");
+          $('#item{{j}}').children('.item-color').hide();
+          $('#item{{j}}').children('.item-color-hide').show();
+        }
+      }
+
+    }else if({{cards[j]}} == 1){
+      if(game_end == false){
+        if($('#item{{j}}').hasClass("reversed") == false ){
+          $('#item{{j}}').addClass("reversed");
+          $('#item{{j}}').children('.item-color').children('.apple_img').show();
+          $('#item{{j}}').children('.item-color').hide();
+        }
+      }
+    }
+  {%endfor%}
+  score -= 100;
+  $("p.score_string").text(score)
+  game_end = true;
+
+
+
+}
+
+
+{%endfor%}
+
+
+
+</script>
+{% endblock %}
