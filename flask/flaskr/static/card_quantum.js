@@ -1,3 +1,4 @@
+flask
 (function($){
 	var score = 0;
 	var game_end = false;
