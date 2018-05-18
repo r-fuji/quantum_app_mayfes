@@ -69,7 +69,7 @@ body {
 
 .player_container_magic{
 	width: 100%;
-	height: 256px;
+	height: 200px;
 	display: flex;
 }
 
@@ -172,8 +172,8 @@ body {
 
 
 .piece{
-	height: 64px;
-	width: 192px;
+	height: 56px;
+	width: 168px;
 	border: solid;
 	border-width: thin;
 	display: flex;
@@ -184,8 +184,8 @@ body {
 	cursor: move;
 }
 .piece2{
-	height: 192px;
-	width: 64px;
+	height: 168px;
+	width: 56px;
 	border: solid;
 	border-width: thin;
 	display: flex;
@@ -215,8 +215,8 @@ body {
 }
 
 .choice_box{
-	height: 64px;
-	width: 64px;
+	height: 56px;
+	width: 56px;
 	border: solid;
 	border-width: thin;
 	display: flex;
@@ -225,8 +225,8 @@ body {
 }
 
 .choice_boxq{
-	height: 64px;
-	width: 64px;
+	height: 56px;
+	width: 56px;
 	border: solid;
 	border-width: thin;
 	display: flex;
@@ -264,8 +264,8 @@ body {
 }
 
 .box_img{
-	height: 56px;
-	width: 56px;
+	height: 36px;
+	width: 36px;
 }
 
 .magic_img{
@@ -294,14 +294,14 @@ body {
 
 
 .piecezone{
-	height: 100px;
-	width: 300px;
+	height: 90px;
+	width: 270px;
 	display: flex;
 }
 
 .magic_square{
-	height: 302px;
-	width: 302px;
+	height: 272px;
+	width: 272px;
 	border: solid;
 	border-width: thin;
 	display: flex;
@@ -339,8 +339,8 @@ body {
 .magic_box{
 	margin: 0;
 	padding: 0;
-	height: 100px;
-	width: 100px;
+	height: 90px;
+	width: 90px;
 	border: solid;
 	display: flex;
 	border-width: thin;
@@ -378,8 +378,8 @@ body {
 }
 
 .magic_square2{
-	height: 302px;
-	width: 302px;
+	height: 272px;
+	width: 272px;
 	border: solid;
 	border-width: thin;
 	display: flex;
@@ -397,36 +397,36 @@ body {
 
 .piecezone_2{
 	margin: 0 ;
-	height: 300px;
-	width: 100px;
+	height: 270px;
+	width: 90px;
 	display: flex;
 	flex-direction: column;
 }
 
 .choicearrow img{
-	width: 64px;
-	height: 64px;
-	margin-bottom: 24px;
+	width: 56px;
+	height: 56px;
+	margin-bottom: 18px;
 }
 
 .diamondswrap{
-	width:1000px;
-	height: 800px;
+	width:800px;
+	height: 600px;
 }
 
 .apple_img{
-	margin-top: 64px;
-	height: 124px;
-	width: 124px;
+	margin-top: 32px;
+	height: 98px;
+	width: 98px;
 	color: rgba(255, 0,55, 1);
 	display: none;
 }
 
 
 .apple_img_hide{
-	margin-top: 24px;
-	height: 124px;
-	width: 124px;
+	margin-top: -200px;
+	height: 98px;
+	width: 98px;
 	color: rgba(255, 0,55, 1);
 	display: none;
 
@@ -439,7 +439,7 @@ body {
 
 .score-render{
 	width: 200px;
-	height: 800px;
+	height: 600px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;

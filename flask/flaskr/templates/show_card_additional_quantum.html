@@ -64,14 +64,14 @@ var game_end = false;
 var score_string = document.getElementById('score_string');
 
 $(".diamondswrap").diamonds({
-    size: 250, // Size of the squares
+    size: 200, // Size of the squares
     gap: 10 // Pixels between squares
 });
 
 $('#quantum_view').on('click', quantum_view);
 function quantum_view(e){
   // $('.item-color').css("animation","");
-  $('.apple_img').show("slow");
+  $('.apple_img_hide').show("slow");
   $('.item-color').css('opacity',0.3);
 
 }
@@ -86,8 +86,6 @@ function click{{i}}(e) {
         $('#item{{i}}').addClass("reversed");
         score += 1;
         $("p.score_string").text(score)
-
-        console.log("{{cards[i]}}");
         $('#item{{i}}').children('.item-color').hide();
         $('#item{{i}}').children('.item-color-hide').show();
       }
@@ -99,13 +97,13 @@ function click{{i}}(e) {
         $('#item{{i}}').addClass("reversed");
         score += 1;
         $("p.score_string").text(score)
-
-        console.log("{{cards[i]}}");
         // $('#item{{i}}').children('.item-color').hide();
         // $('#item{{i}}').removeClass('backgroundColor');
         $('#item{{i}}').children('.item-color').css("backgroundColor","rgba(255,255,255,1)");
         $('#item{{i}}').children('.item-color').hide();
         $('#item{{i}}').children('.apple_img_hide').show();
+        $('#item{{i}}').children('.apple_img_hide').css("margin-top","36px");
+
         $('.apple_img').css('opacity',1.4);
         game_end = true;
       }

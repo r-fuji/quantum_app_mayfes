@@ -342,9 +342,6 @@ function onDrop(e) {
   }
 
   $(this).css('background','rgba(255,255,255,1)');
-  console.log(rowvalue)
-  console.log(piecevalue)
-  console.log(rowvectror)
 
 }
 
@@ -398,13 +395,6 @@ function onDrop2(e) {
 
 
   $(this).css('background','rgba(255,255,255,1)');
-  console.log(rowvalue)
-  console.log(piecevalue)
-  console.log(colvalue)
-  console.log(piece2value)
-  console.log(rowvectror)
-  console.log(colvectror)
-
 }
 
 function clickNext(e) {
@@ -439,8 +429,6 @@ function clickNext(e) {
       start = 0;
       for(var i in rowvectror){
         num =Number(i)+Number(start)+1;
-        console.log(num,rowvectror[i]);
-
 
         if(rowvectror[i] == 0){
           row_bits[num-1]+=-1
@@ -453,11 +441,9 @@ function clickNext(e) {
       }
 
     }else if(rowvalue == "piecezone2"){
-      console.log("2");
       start = 3;
       for(var i in rowvectror){
         num =Number(i)+Number(start)+1;
-        console.log(num,rowvectror[i]);
 
 
         if(rowvectror[i] == 0){
@@ -471,11 +457,9 @@ function clickNext(e) {
       }
 
     }else if(rowvalue == "piecezone3"){
-      console.log("3");
       start = 6;
       for(var i in rowvectror){
         num =Number(i)+Number(start)+1;
-        console.log(num,rowvectror[i]);
 
 
         if(rowvectror[i] == 0){
@@ -490,11 +474,9 @@ function clickNext(e) {
 
 
     if(colvalue == "piecezone1_2"){
-      console.log("1");
       start = 0;
       for(var i in colvectror){
         num =Number(i)*3+Number(start)+1;
-        console.log(num,colvectror[i]);
 
 
         if(colvectror[i] == 0){
@@ -509,7 +491,6 @@ function clickNext(e) {
       start = 1;
       for(var i in colvectror){
         num =Number(i)*3+Number(start)+1;
-        console.log(num,colvectror[i]);
 
         if(colvectror[i] == 0){
           col_bits[num-1]+=-1
@@ -524,7 +505,6 @@ function clickNext(e) {
       start = 2;
       for(var i in colvectror){
         num =Number(i)*3+Number(start)+1;
-        console.log(num,colvectror[i]);
 
         if(colvectror[i] == 0){
           col_bits[num-1]+=-1
@@ -543,23 +523,16 @@ function clickNext(e) {
 
 
     colfilled = false;
-    console.log(row_bits);
-    console.log(col_bits);
-
     range = [0,1,2,3,4,5,6,7,8]
     for(var i in range){
-      console.log(row_bits[i] + col_bits[i]);
       if((row_bits[i] + col_bits[i]) == 2){
-        console.log('win');
         $(".win_img").show();
         break;
       }else if ((row_bits[i] + col_bits[i]) == -2) {
-        console.log('win');
         $(".win_img").show();
         break;
       }
       if(i == 8){
-        console.log('lose');
 
         $(".lose_img").show();
         break;

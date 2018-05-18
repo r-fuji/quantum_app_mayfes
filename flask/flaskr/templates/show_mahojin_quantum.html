@@ -234,7 +234,7 @@
 
 
     <a class="btn btn-primary btn-magic" id="magic-next"role="button" href="#">次へ</a>
-    <a class="btn btn-primary btn-magic" role="button" href="http://127.0.0.1:5000/mahojin">リセット</a>
+    <a class="btn btn-primary btn-magic" role="button" href="http://127.0.0.1:5000/mahojin_quantum">リセット</a>
 
 
     </div>
@@ -312,7 +312,6 @@ function entangle_btn(e){
     )
     .done(function() {
       $('.piece_wrap').hide();
-      console.log("fuga");
       $('.hide_wrap').show();
       entangle = true
       $("#entangle_btn").hide();
@@ -369,9 +368,7 @@ function onDrop(e) {
 
   e.preventDefault();
   var type = e.originalEvent.dataTransfer.getData('text');
-  console.log("type");
 
-  console.log(type);
   if(type=="piece1"){
     rowlist = [];
     $(".conbox").empty();
@@ -518,7 +515,6 @@ function clickNext(e) {
       rownum = piecenumber(rowvalue);
       colnum = piecenumber(colvalue);
       a = (rownum-1) * 3 * 2 + (colnum-1)*2
-      console.log(a)
       rowvectror = entangle_mat[a]
       colvectror = entangle_mat[a+1]
 
@@ -529,7 +525,6 @@ function clickNext(e) {
       start = 0;
       for(var i in rowvectror){
         num =Number(i)+Number(start)+1;
-        console.log(num,rowvectror[i]);
 
 
         if(rowvectror[i] == 0){
@@ -543,11 +538,9 @@ function clickNext(e) {
       }
 
     }else if(rowvalue == "piecezone2"){
-      console.log("2");
       start = 3;
       for(var i in rowvectror){
         num =Number(i)+Number(start)+1;
-        console.log(num,rowvectror[i]);
 
 
         if(rowvectror[i] == 0){
@@ -561,11 +554,9 @@ function clickNext(e) {
       }
 
     }else if(rowvalue == "piecezone3"){
-      console.log("3");
       start = 6;
       for(var i in rowvectror){
         num =Number(i)+Number(start)+1;
-        console.log(num,rowvectror[i]);
 
 
         if(rowvectror[i] == 0){
@@ -580,11 +571,9 @@ function clickNext(e) {
 
 
     if(colvalue == "piecezone1_2"){
-      console.log("1");
       start = 0;
       for(var i in colvectror){
         num =Number(i)*3+Number(start)+1;
-        console.log(num,colvectror[i]);
 
 
         if(colvectror[i] == 0){
@@ -599,7 +588,6 @@ function clickNext(e) {
       start = 1;
       for(var i in colvectror){
         num =Number(i)*3+Number(start)+1;
-        console.log(num,colvectror[i]);
 
         if(colvectror[i] == 0){
           col_bits[num-1]+=-1
@@ -614,7 +602,6 @@ function clickNext(e) {
       start = 2;
       for(var i in colvectror){
         num =Number(i)*3+Number(start)+1;
-        console.log(num,colvectror[i]);
 
         if(colvectror[i] == 0){
           col_bits[num-1]+=-1
@@ -633,23 +620,17 @@ function clickNext(e) {
 
 
     colfilled = false;
-    console.log(row_bits);
-    console.log(col_bits);
 
     range = [0,1,2,3,4,5,6,7,8]
     for(var i in range){
-      console.log(row_bits[i] + col_bits[i]);
       if((row_bits[i] + col_bits[i]) == 2){
-        console.log('win');
         $(".win_img").show();
         break;
       }else if ((row_bits[i] + col_bits[i]) == -2) {
-        console.log('win');
         $(".win_img").show();
         break;
       }
       if(i == 8){
-        console.log('lose');
 
         $(".lose_img").show();
         break;
