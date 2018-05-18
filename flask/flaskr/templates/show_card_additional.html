@@ -27,8 +27,9 @@
       <!-- http://jsrun.it/assets/9/d/P/N/9dPNH.png -->
       {%if cards[i] == 1%}
       <a href="#" class="item item-size" id="item{{i}}">
-        <div class="item-color-cl"></div>
+        <div class="item-color-cl">
         <img src="{{ url_for('static', filename='picture/apple_256px.png') }}" alt="" class="apple_img"></img>
+        </div>
       </a>
       {%endif%}
     {%endfor%}
@@ -36,12 +37,12 @@
 
     <div class="score-render">
       <div>
-        <p>スコア</p>
+        <p>探索回数</p>
       </div>
       <div>
-        <p class="score_string">2000</p>
+        <p class="score_string">0</p>
       </div>
-      <a class="btn reset_btn btn-primary" href="http://127.0.0.1:5000/add" role="button">リスタート</a>
+      <a class="btn reset_btn btn-primary" href="http://127.0.0.1:5000/card" role="button">リスタート</a>
     </div>
 
 </div>
@@ -55,12 +56,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.js"></script>
 
 <script>
-var score = 2000;
+var score = 0;
 var game_end = false;
 var score_string = document.getElementById('score_string');
 
 $(".diamondswrap").diamonds({
-    size: 250, // Size of the squares
+    size: 200, // Size of the squares
     gap: 10 // Pixels between squares
 });
 
@@ -72,7 +73,7 @@ function click{{i}}(e) {
     if(game_end == false){
       if($('#item{{i}}').hasClass("reversed") == false ){
         $('#item{{i}}').addClass("reversed");
-        score -= 100;
+        score += 1;
         $("p.score_string").text(score)
 
         console.log("{{cards[i]}}");
@@ -85,11 +86,15 @@ function click{{i}}(e) {
     if(game_end == false){
       if($('#item{{i}}').hasClass("reversed") == false ){
         $('#item{{i}}').addClass("reversed");
+        score += 1;
+
         $("p.score_string").text(score)
 
         console.log("{{cards[i]}}");
+        // $('#item{{i}}').children('.item-color-cl').hide();
+        // $('#item{{i}}').removeClass('backgroundColor');
+        $('#item{{i}} .item-color-cl').css("backgroundColor","rgba(255,255,255,1)");
         $('#item{{i}}').children('.item-color-cl').children('.apple_img').show();
-        $('#item{{i}}').children('.item-color-cl').hide();
         game_end = true;
       }
     }

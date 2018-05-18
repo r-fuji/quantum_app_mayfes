@@ -27,8 +27,11 @@
       <!-- http://jsrun.it/assets/9/d/P/N/9dPNH.png -->
       {%if cards[i] == 1%}
       <a href="#" class="item item-size" id="item{{i}}">
-        <div class="item-color"></div>
+        <div class="item-color">
         <img src="{{ url_for('static', filename='picture/apple_256px.png') }}" alt="" class="apple_img"></img>
+        </div>
+        <img src="{{ url_for('static', filename='picture/apple_256px.png') }}" alt="" class="apple_img_hide"></img>
+
       </a>
       {%endif%}
     {%endfor%}
@@ -36,11 +39,12 @@
 
     <div class="score-render">
       <div>
-        <p>スコア</p>
+        <p>探索回数</p>
       </div>
       <div>
-        <p class="score_string">2000</p>
+        <p class="score_string">0</p>
       </div>
+      <a class="btn quantumview_btn btn-primary" id="quantum_view" role="button">量子的観測</a>
       <a class="btn reset_btn btn-primary" href="http://127.0.0.1:5000/quantum" role="button">リスタート</a>
     </div>
 
@@ -55,49 +59,60 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.js"></script>
 
 <script>
-var score = 2000;
+var score = 0;
 var game_end = false;
 var score_string = document.getElementById('score_string');
 
 $(".diamondswrap").diamonds({
-    size: 250, // Size of the squares
+    size: 200, // Size of the squares
     gap: 10 // Pixels between squares
 });
+
+$('#quantum_view').on('click', quantum_view);
+function quantum_view(e){
+  // $('.item-color').css("animation","");
+  $('.apple_img_hide').show("slow");
+  $('.item-color').css('opacity',0.3);
+
+}
 
 
 {%for i in range(21)%}
 $('#item{{i}}').on('click', click{{i}});
 function click{{i}}(e) {
-  {%for j in range(21)%}
-    if({{cards[j]}} == 0){
-      if(game_end == false){
-        if($('#item{{j}}').hasClass("reversed") == false ){
-          $('#item{{j}}').addClass("reversed");
-          $('#item{{j}}').children('.item-color').hide();
-          $('#item{{j}}').children('.item-color-hide').show();
-        }
-      }
-
-    }else if({{cards[j]}} == 1){
-      if(game_end == false){
-        if($('#item{{j}}').hasClass("reversed") == false ){
-          $('#item{{j}}').addClass("reversed");
-          $('#item{{j}}').children('.item-color').children('.apple_img').show();
-          $('#item{{j}}').children('.item-color').hide();
-        }
+  if({{cards[i]}} == 0){
+    if(game_end == false){
+      if($('#item{{i}}').hasClass("reversed") == false ){
+        $('#item{{i}}').addClass("reversed");
+        score += 1;
+        $("p.score_string").text(score)
+        $('#item{{i}}').children('.item-color').hide();
+        $('#item{{i}}').children('.item-color-hide').show();
       }
     }
-  {%endfor%}
-  score -= 100;
-  $("p.score_string").text(score)
-  game_end = true;
 
+  }else if({{cards[i]}} == 1){
+    if(game_end == false){
+      if($('#item{{i}}').hasClass("reversed") == false ){
+        $('#item{{i}}').addClass("reversed");
+        score += 1;
+        $("p.score_string").text(score)
+        // $('#item{{i}}').children('.item-color').hide();
+        // $('#item{{i}}').removeClass('backgroundColor');
+        $('#item{{i}}').children('.item-color').css("backgroundColor","rgba(255,255,255,1)");
+        $('#item{{i}}').children('.item-color').hide();
+        $('#item{{i}}').children('.apple_img_hide').show();
+        $('#item{{i}}').children('.apple_img_hide').css("margin-top","36px");
 
+        $('.apple_img').css('opacity',1.4);
+        game_end = true;
+      }
+    }
+  }
 
 }
-
-
 {%endfor%}
+
 
 
 
