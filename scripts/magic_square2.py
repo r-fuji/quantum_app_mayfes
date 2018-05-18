@@ -180,91 +180,95 @@ for idx in range(1,4):
 
 a, b = random.randint(1,3), random.randint(1,3) #generate random integers
 
-print("The values of a and b are, resp.,", a,b)
-aliceCircuit = aliceCircuits["Alice"+str(a)]
-bobCircuit = bobCircuits["Bob"+str(b)]
-
-circuitName = "Alice"+str(a)+"Bob"+str(b)
-Q_program.add_circuit(circuitName, sharedEntangled+aliceCircuit+bobCircuit)
-
-backend = "local_qasm_simulator"
-##backend = "ibmqx2"
-
-shots = 1 # We perform a one-shot experiment
-results = Q_program.execute([circuitName], backend=backend, shots=shots)
-answer = results.get_counts(circuitName)
-print(answer)
-for key in answer.keys():
-    aliceAnswer = [int(key[-1]), int(key[-2])]
-    bobAnswer   = [int(key[-3]), int(key[-4])]
-    if sum(aliceAnswer) % 2 == 0:#the sume of Alice answer must be even
-        aliceAnswer.append(0)
-    else:
-        aliceAnswer.append(1)
-    if sum(bobAnswer) % 2 == 1:#the sum of Bob answer must be odd
-        bobAnswer.append(0)
-    else:
-        bobAnswer.append(1)
-    break
-
-print("Alice answer for a = ", a, "is", aliceAnswer)
-print("Bob answer for b = ", b, "is", bobAnswer)
-
-if(aliceAnswer[b-1] != bobAnswer[a-1]): #check if the intersection of their answers is the same
-    print("Alice and Bob lost")
-else:
-    print("Alice and Bob won")
-
-backend = "local_qasm_simulator"
-#backend = "ibmqx2"
-shots = 10 # We perform 10 shots of experiments for each round
-nWins = 0
-nLost = 0
-for a in range(1,4):
-    for b in range(1,4):
-        print("Asking Alice and Bob with a and b are, resp.,", a,b)
-        rWins = 0
-        rLost = 0
-
+for i in range(3):
+    for j in range(3):
+        a = i +1;
+        b= j +1;
+        # print("The values of a and b are, resp.,", a,b)
         aliceCircuit = aliceCircuits["Alice"+str(a)]
         bobCircuit = bobCircuits["Bob"+str(b)]
+
         circuitName = "Alice"+str(a)+"Bob"+str(b)
         Q_program.add_circuit(circuitName, sharedEntangled+aliceCircuit+bobCircuit)
 
-        if backend == "ibmqx2":
-            ibmqx2_backend = Q_program.get_backend_configuration('ibmqx2')
-            ibmqx2_coupling = ibmqx2_backend['coupling_map']
-            results = Q_program.execute([circuitName], backend=backend, shots=shots, coupling_map=ibmqx2_coupling, max_credits=3, wait=10, timeout=240)
-        else:
-            results = Q_program.execute([circuitName], backend=backend, shots=shots)
-        answer = results.get_counts(circuitName)
+        backend = "local_qasm_simulator"
+        ##backend = "ibmqx2"
 
+        shots = 1 # We perform a one-shot experiment
+        results = Q_program.execute([circuitName], backend=backend, shots=shots)
+        answer = results.get_counts(circuitName)
+        # print(answer)
         for key in answer.keys():
-            kfreq = answer[key] #frequencies of keys obtained from measurements
             aliceAnswer = [int(key[-1]), int(key[-2])]
             bobAnswer   = [int(key[-3]), int(key[-4])]
-            if sum(aliceAnswer) % 2 == 0:
+            if sum(aliceAnswer) % 2 == 0:#the sume of Alice answer must be even
                 aliceAnswer.append(0)
             else:
                 aliceAnswer.append(1)
-            if sum(bobAnswer) % 2 == 1:
+            if sum(bobAnswer) % 2 == 1:#the sum of Bob answer must be odd
                 bobAnswer.append(0)
             else:
                 bobAnswer.append(1)
+            break
 
-            #print("Alice answer for a = ", a, "is", aliceAnswer)
-            #print("Bob answer for b = ", b, "is", bobAnswer)
+        print("Alice answer for a = ", a, "is", aliceAnswer)
+        print("Bob answer for b = ", b, "is", bobAnswer)
 
-            if(aliceAnswer[b-1] != bobAnswer[a-1]):
-                #print(a, b, "Alice and Bob lost")
-                nLost += kfreq
-                rLost += kfreq
-            else:
-                #print(a, b, "Alice and Bob won")
-                nWins += kfreq
-                rWins += kfreq
-        print("\t#wins = ", rWins, "out of ", shots, "shots")
+        # if(aliceAnswer[b-1] != bobAnswer[a-1]): #check if the intersection of their answers is the same
+        #     print("Alice and Bob lost")
+        # else:
+        #     print("Alice and Bob won")
 
-print("Number of Games = ", nWins+nLost)
-print("Number of Wins = ", nWins)
-print("Winning probabilities = ", (nWins*100.0)/(nWins+nLost))
+        backend = "local_qasm_simulator"
+        #backend = "ibmqx2"
+        shots = 10 # We perform 10 shots of experiments for each round
+        nWins = 0
+        nLost = 0
+        for a in range(1,4):
+            for b in range(1,4):
+                # print("Asking Alice and Bob with a and b are, resp.,", a,b)
+                rWins = 0
+                rLost = 0
+
+                aliceCircuit = aliceCircuits["Alice"+str(a)]
+                bobCircuit = bobCircuits["Bob"+str(b)]
+                circuitName = "Alice"+str(a)+"Bob"+str(b)
+                Q_program.add_circuit(circuitName, sharedEntangled+aliceCircuit+bobCircuit)
+
+                if backend == "ibmqx2":
+                    ibmqx2_backend = Q_program.get_backend_configuration('ibmqx2')
+                    ibmqx2_coupling = ibmqx2_backend['coupling_map']
+                    results = Q_program.execute([circuitName], backend=backend, shots=shots, coupling_map=ibmqx2_coupling, max_credits=3, wait=10, timeout=240)
+                else:
+                    results = Q_program.execute([circuitName], backend=backend, shots=shots)
+                answer = results.get_counts(circuitName)
+
+                for key in answer.keys():
+                    kfreq = answer[key] #frequencies of keys obtained from measurements
+                    aliceAnswer = [int(key[-1]), int(key[-2])]
+                    bobAnswer   = [int(key[-3]), int(key[-4])]
+                    if sum(aliceAnswer) % 2 == 0:
+                        aliceAnswer.append(0)
+                    else:
+                        aliceAnswer.append(1)
+                    if sum(bobAnswer) % 2 == 1:
+                        bobAnswer.append(0)
+                    else:
+                        bobAnswer.append(1)
+
+                    #print("Alice answer for a = ", a, "is", aliceAnswer)
+                    #print("Bob answer for b = ", b, "is", bobAnswer)
+
+                    if(aliceAnswer[b-1] != bobAnswer[a-1]):
+                        #print(a, b, "Alice and Bob lost")
+                        nLost += kfreq
+                        rLost += kfreq
+                    else:
+                        #print(a, b, "Alice and Bob won")
+                        nWins += kfreq
+                        rWins += kfreq
+        #         print("\t#wins = ", rWins, "out of ", shots, "shots")
+        #
+        # print("Number of Games = ", nWins+nLost)
+        # print("Number of Wins = ", nWins)
+        # print("Winning probabilities = ", (nWins*100.0)/(nWins+nLost))
