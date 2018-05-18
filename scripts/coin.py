@@ -18,8 +18,8 @@ import Qconfig_c as Qconfig
 from qiskit.tools.visualization import plot_histogram
 
 M = 16                   #Maximum number of physical qubits available
-numberOfCoins = 8        #This number should be up to M-1, where M is the number of qubits available
-indexOfFalseCoin = 3     #This should be 0, 1, ..., numberOfCoins - 1, where we use python indexing
+numberOfCoins = 15        #This number should be up to M-1, where M is the number of qubits available
+indexOfFalseCoin = 7      #This should be 0, 1, ..., numberOfCoins - 1, where we use python indexing
 
 if numberOfCoins < 4 or numberOfCoins >= M:
     raise Exception("Please use numberOfCoins between 4 and ", M-1)
