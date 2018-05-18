@@ -3,6 +3,32 @@
 {% block body %}
 
 <div class="player_container_magic">
+  <div class="hide_wrap">
+  <div class="piece_wrapq" draggable="false">
+    <div class="piece1_wrap" draggable="false">
+      <div class="piece" id="pieceq" draggable="true">
+        <div class="choice_boxq q-back1">
+        </div>
+        <div class="choice_boxq q-back2">
+        </div>
+        <div class="choice_boxq q-back3">
+        </div>
+      </div>
+    </div>
+
+    <div class="piece2_wrap" draggable="false">
+      <div class="piece2" id="pieceq2" draggable="true">
+        <div class="choice_boxq q-back1">
+        </div>
+        <div class="choice_boxq q-back2">
+        </div>
+        <div class="choice_boxq q-back3">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
   <div class="piece_wrap">
     <div class="piece1_wrap">
       <div class="piece" id="piece1" draggable="true" id="choice1">
@@ -135,6 +161,7 @@
 
 
   <div class="magic_wrap">
+    <a class="btn btn-primary btn-ent ent-btn" id="entangle_btn"role="button" href="#">エンタングル</a>
 
     <div class="choicearrow">
       <img src="{{ url_for('static', filename='picture/down_arrow_64px.png') }}" alt="" class="box_img" draggable="false">
@@ -225,6 +252,7 @@
 var rowvalue = 0;
 var piecevalue = 0;
 var rowfilled = false;
+var entangle = false;
 
 var colvalue = 0;
 var piece2value = 0;
@@ -232,18 +260,23 @@ var colfilled = false;
 
 var rowvectror = [];
 var colvectror = [];
-
+var entangle_mat = ({{result}})
 
 // ピースの関数
 $('#piece1').on('dragstart', onDragStart);
 $('#piece2').on('dragstart', onDragStart);
 $('#piece3').on('dragstart', onDragStart);
 $('#piece4').on('dragstart', onDragStart);
+$('#pieceq').on('dragstart', onDragStart);
+$('#pieceqq').on('dragstart', onDragStart);
+
+
 
 $('#piece2_1').on('dragstart', onDragStart);
 $('#piece2_2').on('dragstart', onDragStart);
 $('#piece2_3').on('dragstart', onDragStart);
 $('#piece2_4').on('dragstart', onDragStart);
+
 
 
 // 受け取り側の関数
@@ -268,6 +301,44 @@ $('#piecezone3_2').on('dragleave', offDragOver);
 $('#piecezone3_2').on('drop', onDrop2);
 
 $('#magic-next').on('click', clickNext);
+$('#entangle_btn').on('click', entangle_btn);
+
+
+
+function entangle_btn(e){
+  if(entangle == false){
+    $.when(
+      ent1()
+    )
+    .done(function() {
+      $('.piece_wrap').hide();
+      console.log("fuga");
+      $('.hide_wrap').show();
+      entangle = true
+      $("#entangle_btn").hide();
+      });
+  }
+}
+
+
+function ent1(){
+  var dfd = $.Deferred();
+  $('.piece_wrap').animate({
+    width:"10px",
+    marginLeft:"200px",
+    opacity : 0
+  } ,'slow');
+  setTimeout(function(){
+        dfd.resolve();
+    }, 500);
+  return dfd.promise();
+
+}
+
+function ent2(){
+  // $('.piece_wrap').hide();
+}
+
 
 function onDragStart(e) {
   e.originalEvent.dataTransfer.setData('text', this.id);
@@ -298,6 +369,9 @@ function onDrop(e) {
 
   e.preventDefault();
   var type = e.originalEvent.dataTransfer.getData('text');
+  console.log("type");
+
+  console.log(type);
   if(type=="piece1"){
     rowlist = [];
     $(".conbox").empty();
@@ -339,13 +413,19 @@ function onDrop(e) {
     piecevalue=4;
     rowvectror = [1,1,1]
     rowfilled = true;
+  }else if (entangle==true){
+    rowlist = [];
+    $(".conbox").empty();
+    $(this).children('.row1').append('<img src=\"{{ url_for('static', filename='picture/hatena.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.row2').append('<img src=\"{{ url_for('static', filename='picture/hatena.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.row3').append('<img src=\"{{ url_for('static', filename='picture/hatena.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    rowvalue=this.id;
+    piecevalue=5;
+    rowvectror = [1,1,1]
+    rowfilled = true;
   }
 
   $(this).css('background','rgba(255,255,255,1)');
-  console.log(rowvalue)
-  console.log(piecevalue)
-  console.log(rowvectror)
-
 }
 
 function onDrop2(e) {
@@ -394,17 +474,19 @@ function onDrop2(e) {
     piece2value = 4
     colvectror = [0, 0,0 ]
     colfilled = true
+  }else if (entangle==true){
+    collist = [];
+    $(".conbox_2").empty();
+    $(this).children('.col1').append('<img src=\"{{ url_for('static', filename='picture/hatena.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.col2').append('<img src=\"{{ url_for('static', filename='picture/hatena.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    $(this).children('.col3').append('<img src=\"{{ url_for('static', filename='picture/hatena.png') }}\" class=\'magic_img\' draggable=\'false\'><img>');
+    colvalue =this.id;
+    piece2value = 5
+    colfilled = true
   }
 
 
   $(this).css('background','rgba(255,255,255,1)');
-  console.log(rowvalue)
-  console.log(piecevalue)
-  console.log(colvalue)
-  console.log(piece2value)
-  console.log(rowvectror)
-  console.log(colvectror)
-
 }
 
 function clickNext(e) {
@@ -432,7 +514,15 @@ function clickNext(e) {
     var col_bits=[0,0,0,0,0,0,0,0,0]
     var row_bits=[0,0,0,0,0,0,0,0,0]
 
+    if(entangle==true){
+      rownum = piecenumber(rowvalue);
+      colnum = piecenumber(colvalue);
+      a = (rownum-1) * 3 * 2 + (colnum-1)*2
+      console.log(a)
+      rowvectror = entangle_mat[a]
+      colvectror = entangle_mat[a+1]
 
+    }
 
     //
     if(rowvalue == "piecezone1"){

@@ -5,11 +5,6 @@ import random
 @app.route('/')
 @app.route('/card')
 def show_card():
-    cards = [0,0,0,0,0,1,0,0,0,0,0,0]
-    return render_template('show_card.html',cards=cards)
-
-@app.route('/add')
-def show_card_add():
     cards = [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     random.shuffle(cards)
     return render_template('show_card_additional.html',cards=cards)
@@ -24,5 +19,12 @@ def show_card_quantum():
 
 @app.route('/mahojin')
 def show_mahojin():
-    cards = [0,0,0,0,0,1,0,0,0,0,0,0]
-    return render_template('show_mahojin.html',cards=cards)
+    return render_template('show_mahojin.html')
+
+@app.route('/mahojin_quantum')
+def show_mahojin_quantum():
+    from flaskr.qfunc.magic_square2 import msquare
+
+    result = msquare()
+
+    return render_template('show_mahojin_quantum.html',result = result)
